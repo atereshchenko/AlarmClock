@@ -1,13 +1,16 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Media;
+using System.Drawing;
+using System.Threading;
 
 namespace AlarmClock
 {
     public partial class Form1 : Form
     {
 		private DateTime alarm;
-		SoundPlayer sp = new SoundPlayer();	
+		SoundPlayer sp = new SoundPlayer();
+		Monitor monitor = new Monitor();
 		public Form1()
         {
             InitializeComponent();
@@ -28,6 +31,8 @@ namespace AlarmClock
 			timer1.Enabled = true;
 
 			label2.Text = DateTime.Now.ToLongTimeString();
+			
+			//MessageBox.Show(monitor.Resolution());
 		}
 
         private void toolStripMenuExit_Click(object sender, EventArgs e)
@@ -59,12 +64,15 @@ namespace AlarmClock
 					alarm = alarm.AddDays(1);
 
 				notifyIcon1.Text = "Будильник: " + alarm.ToShortTimeString();
+				timer2.Interval = 50000;
+				timer2.Enabled = true;
 			}
 			else
 			{
 				numericUpDown1.Enabled = true;
 				numericUpDown2.Enabled = true;
 				notifyIcon1.Text = "Будильник не установлен";
+				timer2.Enabled = false;
 			}
 		}
 
@@ -99,5 +107,31 @@ namespace AlarmClock
 				MessageBoxButtons.OK,
 				MessageBoxIcon.Information);
 		}
-    }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+			new Thread(() => TransitionMouseTo(50, 50, 400)).Start();			
+		}
+
+		public static void TransitionMouseTo(int x, int y, int durationSecs)
+		{
+			int frames = 200;
+			Monitor monitor = new Monitor();
+			PointF vector = new PointF();
+
+			Cursor.Position = new Point(monitor.Width / 2, monitor.Height / 2);
+
+			vector.X = (x - Cursor.Position.X) / frames;
+			vector.Y = (y - Cursor.Position.Y) / frames;
+
+			for (int i = 0; i < frames; i++)
+			{
+				Point pos = Cursor.Position;
+				pos.X += Convert.ToInt32(vector.X);
+				pos.Y += Convert.ToInt32(vector.Y);
+				Cursor.Position = pos;
+				Thread.Sleep(durationSecs / frames * 50);
+			}
+		}
+	}
 }
