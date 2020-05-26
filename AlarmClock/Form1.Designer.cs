@@ -47,6 +47,7 @@
             this.toolStripMenuAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuExit = new System.Windows.Forms.ToolStripMenuItem();
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
@@ -81,16 +82,16 @@
             this.groupBox1.Controls.Add(this.numericUpDown1);
             this.groupBox1.Location = new System.Drawing.Point(13, 46);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(140, 134);
+            this.groupBox1.Size = new System.Drawing.Size(208, 134);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Сигнал";
             // 
             // btnОк
             // 
-            this.btnОк.Location = new System.Drawing.Point(6, 94);
+            this.btnОк.Location = new System.Drawing.Point(6, 105);
             this.btnОк.Name = "btnОк";
-            this.btnОк.Size = new System.Drawing.Size(128, 23);
+            this.btnОк.Size = new System.Drawing.Size(196, 23);
             this.btnОк.TabIndex = 5;
             this.btnОк.Text = "Ок";
             this.btnОк.UseVisualStyleBackColor = true;
@@ -99,7 +100,7 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(6, 71);
+            this.checkBox1.Location = new System.Drawing.Point(12, 77);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(75, 17);
             this.checkBox1.TabIndex = 4;
@@ -110,7 +111,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(69, 47);
+            this.label4.Location = new System.Drawing.Point(75, 53);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(37, 13);
             this.label4.TabIndex = 3;
@@ -118,7 +119,7 @@
             // 
             // numericUpDown2
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(6, 45);
+            this.numericUpDown2.Location = new System.Drawing.Point(12, 51);
             this.numericUpDown2.Name = "numericUpDown2";
             this.numericUpDown2.Size = new System.Drawing.Size(57, 20);
             this.numericUpDown2.TabIndex = 2;
@@ -126,7 +127,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(69, 21);
+            this.label3.Location = new System.Drawing.Point(75, 27);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(36, 13);
             this.label3.TabIndex = 1;
@@ -134,7 +135,7 @@
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(6, 19);
+            this.numericUpDown1.Location = new System.Drawing.Point(12, 25);
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(57, 20);
             this.numericUpDown1.TabIndex = 0;
@@ -192,11 +193,15 @@
             this.toolStripMenuExit.Text = "Exit";
             this.toolStripMenuExit.Click += new System.EventHandler(this.toolStripMenuExit_Click);
             // 
+            // timer2
+            // 
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(165, 192);
+            this.ClientSize = new System.Drawing.Size(233, 192);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -234,6 +239,7 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuHideShow;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuAbout;
+        private System.Windows.Forms.Timer timer2;
     }
 }
 
